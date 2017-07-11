@@ -1,0 +1,15 @@
+{
+  "name": "lb-text-input-dialog",
+  "version": "1.0.0",
+  "description": "A text input dialog based on ELement-UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@code.vipkid.com.cn:3590/lingobus-fe/lb-ui/lb-text-input-dialog.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
