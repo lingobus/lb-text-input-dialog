@@ -1,6 +1,6 @@
 {
   "name": "lb-text-input-dialog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A text input dialog based on ELement-UI",
   "main": "index.js",
   "scripts": {
