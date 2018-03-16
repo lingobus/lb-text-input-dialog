@@ -1,5 +1,6 @@
 import Vue from 'vue'
-let TextInputConstructor = Vue.extend(require('./main.vue'))
+import options from './main.vue'
+let TextInputConstructor = Vue.extend(options)
 
 var TextInput = function(options) {
   if (Vue.prototype.$isServer) return
@@ -12,31 +13,30 @@ var TextInput = function(options) {
   let id = 'TextInput'
 
   var instance = new TextInputConstructor({
+    el: document.createElement('div'),
     data: options
   })
   instance.id = id
-  instance.vm = instance.$mount()
-  document.body.appendChild(instance.vm.$el)
+  document.body.appendChild(instance.$el)
 
-  const vm = instance.vm
-
-  vm.promise = new Promise((resolve, reject) => {
-    vm.onAction = (act) => {
-      resolve(vm.input)
-      vm.visible = false
-      vm.$el.parentNode.removeChild(vm.$el)
+  instance.promise = new Promise((resolve, reject) => {
+    instance.onAction = (positive) => {
+      instance.visible = false
+      if (positive) {
+        resolve(instance.input)
+      } else {
+        reject()
+      }
+      instance.$el.parentNode.removeChild(instance.$el)
     }
   })
-  instance.dom = instance.vm.$el
   return instance
 }
 
-/*
- * title, text => not neccessary
- */
+
 TextInput.open = function(title, text) {
   var instance = new TextInput()
-  const vm = instance.vm
+  const vm = instance
   vm.dlgTitle = title || 'Please enter text'
   vm.input = text || ''
   vm.visible = true
