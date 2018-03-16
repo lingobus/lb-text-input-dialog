@@ -8,8 +8,8 @@
               :rows="2",
               v-model="input")
     .handle
-      el-button(@click="visible=false") Cancel
-      el-button(type="primary" @click="action('submit')") Confirm
+      el-button(@click="action(false)") Cancel
+      el-button(type="primary" @click="action(true)") Confirm
 </template>
 <style lang="stylus">
 .text-input-v1
